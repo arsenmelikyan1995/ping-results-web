@@ -1,33 +1,37 @@
 package com.example.pingresultsweb.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import java.util.Date;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "ping_results")
 public class PingResult {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String ipAddress;
-    private String domainName;
-    private Date testDate;
-    private String testStatus;
-    private String pingResult;
+    @Column(nullable = false)
+    private String result;
+
+    @OneToOne
+    @JoinColumn(name = "ping_request_id", referencedColumnName = "id")
+    private PingRequest pingRequest;
+
+    // constructors, getters and setters
+
 
     public PingResult() {
     }
 
-    public PingResult(String ipAddress, String domainName, Date testDate, String testStatus, String pingResult) {
-        this.ipAddress = ipAddress;
-        this.domainName = domainName;
-        this.testDate = testDate;
-        this.testStatus = testStatus;
-        this.pingResult = pingResult;
+    public PingResult(String result, PingRequest pingRequest) {
+        this.result = result;
+        this.pingRequest = pingRequest;
     }
 
     public Long getId() {
@@ -38,44 +42,19 @@ public class PingResult {
         this.id = id;
     }
 
-    public String getIpAddress() {
-        return ipAddress;
+    public String getResult() {
+        return result;
     }
 
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
+    public void setResult(String result) {
+        this.result = result;
     }
 
-    public String getDomainName() {
-        return domainName;
+    public PingRequest getPingRequest() {
+        return pingRequest;
     }
 
-    public void setDomainName(String domainName) {
-        this.domainName = domainName;
+    public void setPingRequest(PingRequest pingRequest) {
+        this.pingRequest = pingRequest;
     }
-
-    public Date getTestDate() {
-        return testDate;
-    }
-
-    public void setTestDate(Date testDate) {
-        this.testDate = testDate;
-    }
-
-    public String getTestStatus() {
-        return testStatus;
-    }
-
-    public void setTestStatus(String testStatus) {
-        this.testStatus = testStatus;
-    }
-
-    public String getPingResult() {
-        return pingResult;
-    }
-
-    public void setPingResult(String pingResult) {
-        this.pingResult = pingResult;
-    }
-
 }

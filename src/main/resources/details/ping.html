@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Ping Form</title>
+</head>
+<body>
+<h1>Ping a Host</h1>
+<form method="post" th:action="@{/ping}">
+  <p>Host: <input type="text" name="host" th:field="*{host}" required></p>
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>

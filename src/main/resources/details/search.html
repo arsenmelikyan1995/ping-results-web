@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Search</title>
+</head>
+<body>
+<h1>Search Results</h1>
+<form method="post" th:action="@{/search}">
+  <p>Host/IP Address: <input type="text" name="hostOrIpAddress" th:field="*{hostOrIpAddress}"></p>
+  <p>Start Date: <input type="datetime-local" name="startDate" th:field="*{startDate}"></p>
+  <p>
+    <input type="datetime-local" name="endDate" th:field="*{endDate}"></p>
+  <p>Status:
+    <select name="testStatus" th:field="*{testStatus}">
+      <option value="">All</option>
+      <option value="SUCCESS">Success</option>
+      <option value="FAILURE">Failure</option>
+      <option value="IN_PROGRESS">In Progress</option>
+    </select>
+  </p>
+  <button type="submit">Search</button>
+</form>
+
+</body>
+</html>

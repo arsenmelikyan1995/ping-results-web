@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results</title>
+</head>
+<body>
+<h1>Search Results</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Host/IP Address</th>
+    <th>Date</th>
+    <th>Status</th>
+    <th>Result</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="pingRequest : ${results}">
+    <td th:text="${pingRequest.id}"></td>
+    <td th:text="${pingRequest.host}"></td>
+    <td th:text="${pingRequest.date}"></td>
+    <td th:text="${pingRequest.status}"></td>
+    <td><a th:href="@{/ping/{id}(id=${pingRequest.id})}">View Result</a></td>
+    <td><a th:href="@{/ping/{id}(id=${pingRequest.id})}">View Details</a></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

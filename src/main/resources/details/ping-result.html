@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Ping Result</title>
+</head>
+<body>
+<h1>Ping Result</h1>
+<p>Your request has been submitted with ID: <span th:text="${pingRequestId}"></span></p>
+<p>Please wait a moment and then click the link below to view the result:</p>
+<p><a th:href="@{/ping/{id}(id=${pingRequestId})}">View Result</a></p>
+</body>
+</html>
